@@ -7,5 +7,11 @@ export default {
 	height: 800, // Game height in pixels
 	backgroundColor: 0x222fff,
 	scene: [ Scene1, Scene2 ],
-	pixelArt: true
+	pixelArt: true,
+	physics: {
+		default: 'arcade',
+		arcade: {
+			debug: false
+		}
+	}
 };
