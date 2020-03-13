@@ -5,18 +5,18 @@ export default class Scene1 extends Phaser.Scene {
 
 	preload() {
 		this.load.image('background', 'assets/images/nebula.png');
-		// this.load.spritesheet('ship1', 'assets/images/ship.png', {
-		// 	frameWidth: 16,
-		// 	frameHeight: 16
-		// });
-		// this.load.spritesheet('ship2', 'assets/images/ship2.png', {
-		// 	frameWidth: 32,
-		// 	frameHeight: 16
-		// });
-		// this.load.spritesheet('ship3', 'assets/images/ship3.png', {
-		// 	frameWidth: 32,
-		// 	frameHeight: 32
-		// });
+		this.load.spritesheet('ship1', 'assets/images/ship.png', {
+			frameWidth: 16,
+			frameHeight: 16
+		});
+		this.load.spritesheet('ship2', 'assets/images/ship2.png', {
+			frameWidth: 32,
+			frameHeight: 16
+		});
+		this.load.spritesheet('ship3', 'assets/images/ship3.png', {
+			frameWidth: 32,
+			frameHeight: 32
+		});
 		this.load.spritesheet('explosion', 'assets/images/explosion.png', {
 			frameWidth: 16,
 			frameHeight: 16
@@ -29,12 +29,21 @@ export default class Scene1 extends Phaser.Scene {
 			frameWidth: 16,
 			frameHeight: 24
 		});
+		this.load.spritesheet('beam', 'assets/images/beam.png', {
+			frameWidth: 16,
+			frameHeight: 16
+		});
 
-		this.load.image('ship4', 'assets/images/4.png');
-		this.load.image('ship5', 'assets/images/5.png');
-		this.load.image('ship3', 'assets/images/3.png');
-		this.load.image('ship2', 'assets/images/2.png');
-		this.load.image('ship1', 'assets/images/1.png');
+		// this.load.image('ship4', 'assets/images/4.png');
+		// this.load.image('ship5', 'assets/images/5.png');
+		// this.load.image('ship3', 'assets/images/3.png');
+		// this.load.image('ship2', 'assets/images/2.png');
+		// this.load.image('ship1', 'assets/images/1.png');
+		this.load.bitmapFont('pixelFont', 'assets/font/font.png', 'assets/font/font.xml');
+		this.load.audio('audio_beam', [ 'assets/sounds/beam.ogg', 'assets/sounds/beam.mp3' ]);
+		this.load.audio('audio_explosion', [ 'assets/sounds/explosion.ogg', 'assets/sounds/explosion.mp3' ]);
+		this.load.audio('audio_pickup', [ 'assets/sounds/pickup.ogg', 'assets/sounds/pickup.mp3' ]);
+		this.load.audio('music', [ 'assets/sounds/sci-fi_platformer12.ogg', 'assets/sounds/sci-fi_platformer12.mp3' ]);
 	}
 	create() {
 		// this.add.text(20, 20, 'Loading game...');
@@ -88,6 +97,12 @@ export default class Scene1 extends Phaser.Scene {
 			key: 'thrust',
 			frames: this.anims.generateFrameNumbers('player'),
 			frameRate: 20,
+			repeat: -1
+		});
+		this.anims.create({
+			key: 'beam_anim',
+			frames: this.anims.generateFrameNumbers('beam'),
+			frameRate: 10,
 			repeat: -1
 		});
 	}
